@@ -15,6 +15,9 @@ def emo_detect():
     text_to_analyse = request.args.get("textToAnalyze") #from java script
     response = emotion_detector(text_to_analyse)
 
+    if response["dominant_emotion"] is None:
+        return "Invalid text! Please try again!"
+
     return (
         "For the given statement, the system response is "
         f"'anger': {response['anger']}, "
